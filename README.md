@@ -1,6 +1,6 @@
-# PrimeBrothers — E‑Commerce Website
+# E Commerce Website Using JavaScript
 
-An ecommerce website built with React.js.
+PrimeBrothers is a simple, responsive ecommerce frontend built with JavaScript (React) and Bootstrap. It showcases product listings, product detail pages, cart management, and a checkout flow powered by the Fake Store API. The UI is clean, mobile-friendly, and easy to extend or integrate with a real backend.
 
 
 ## Demo
@@ -13,24 +13,20 @@ Live Demo (optional): add your deployment URL here.
 - Fully Responsive
 
 
-## Screenshots
-
-![App Screenshot](https://i.ibb.co/fQ293tm/image.png)
-
-
+ 
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/mhusman123/Ecommerce-Website-Using-React.git
+  git clone https://github.com/mhusman123/Ecommerce-Website-Using-JavaScript.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd React_E-Commerce
+  cd Ecommerce-Website-Using-JavaScript
 ```
 
 Install dependencies
@@ -62,7 +58,7 @@ Just raise an issue, we will discuss it.
 
 ## Feedback
 
-Repository: https://github.com/mhusman123/Ecommerce-Website-Using-React
+Repository: https://github.com/mhusman123/Ecommerce-Website-Using-JavaScript
 
 If you have any feedback, please reach out to us at: musmanmahar5312@gmail.com
 
