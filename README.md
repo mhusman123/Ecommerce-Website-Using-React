@@ -14,6 +14,11 @@
 PrimeBrothers is a simple, responsive ecommerce frontend built with JavaScript (React) and Bootstrap. It includes product listings, product details with recommendations, a cart powered by Redux, and a checkout summary using data from the Fake Store API. Prices are shown in Pakistani Rupees (RS) with a configurable conversion rate.
 
 
+## About
+
+PrimeBrothers is an ecommerce UI focused on a clean shopping experience: browse curated products, view details and recommendations, add to cart, and review an order summary at checkout. It’s built for speed and clarity, making it a great starting point for connecting a real backend or payments later. The brand reflects a family-run business from District Shikarpur, Sindh, Pakistan.
+
+
 ## Demo
 
 Live Demo (optional): add your deployment URL here.
@@ -29,13 +34,7 @@ Live Demo (optional): add your deployment URL here.
 - Currency: PKR (RS) with USD→PKR conversion via environment variable
 ## Getting Started
 
-Clone the project
-
- 
-
-## Run Locally
-
-Clone the project
+Run locally
 
 ```bash
   git clone https://github.com/mhusman123/Ecommerce-Website-Using-React.git
