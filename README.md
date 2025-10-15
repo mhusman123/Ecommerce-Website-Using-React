@@ -5,7 +5,7 @@ An ecommerce website built with React.js.
 
 ## Demo
 
-Demo URL (optional): add your deployment URL here.
+Live Demo (optional): add your deployment URL here.
 
 ## Features
 
@@ -24,7 +24,7 @@ Demo URL (optional): add your deployment URL here.
 Clone the project
 
 ```bash
-  git clone <your-repo-url>
+  git clone https://github.com/mhusman123/Ecommerce-Website-Using-React.git
 ```
 
 Go to the project directory
@@ -62,6 +62,8 @@ Just raise an issue, we will discuss it.
 
 ## Feedback
 
-If you have any feedback, please reach out to us at: contact@primebrothers.example
+Repository: https://github.com/mhusman123/Ecommerce-Website-Using-React
+
+If you have any feedback, please reach out to us at: musmanmahar5312@gmail.com
 
 
