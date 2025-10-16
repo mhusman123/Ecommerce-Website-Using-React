@@ -7,3 +7,14 @@
 @keyframes brandShift{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
 .sidebar-link{background:transparent;border:0;padding:.5rem 0;width:100%;text-align:left;font-size:1rem}
 .sidebar-link:hover{color:#0d6efd}
+
+/* Attractive animated menu button */
+.menu-btn{position:relative;overflow:hidden;border:none;color:#fff;font-weight:600}
+.menu-btn{background:linear-gradient(90deg,#0d6efd,#6f42c1,#dc3545,#fd7e14,#198754);background-size:300% 300%;animation:menuGradient 6s linear infinite}
+.menu-btn:hover{filter:brightness(1.05)}
+@keyframes menuGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+/* Subtle animated underline for brand */
+.brand-dynamic{position:relative;display:inline-block}
+.brand-dynamic::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:linear-gradient(90deg,#0d6efd,#dc3545,#198754);animation:brandUnderline 6s linear infinite}
+@keyframes brandUnderline{0%{transform:translateX(-100%)}50%{transform:translateX(0)}100%{transform:translateX(100%)}}

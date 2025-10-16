@@ -5,9 +5,10 @@ import { addCart } from "../redux/action";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { formatPKRFromUSD, formatDiscountedPKRFromUSD } from "../utils/currency";
+import "./Products.css";
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -16,9 +17,14 @@ const Products = () => {
   const mountedRef = useRef(true);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const addProduct = (product) => {
     dispatch(addCart(product));
+  };
+
+  const goToDetails = (id) => {
+    navigate(`/product/${id}`);
   };
 
   useEffect(() => {
@@ -113,14 +119,19 @@ const Products = () => {
             <div
               id={product.id}
               key={product.id}
-              className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4"
+              className="col-lg-3 col-md-4 col-sm-6 col-12 mb-4"
             >
-              <div className="card text-center h-100 shadow-sm border-0" key={product.id}>
+              <div
+                className="card text-center h-100 shadow-sm border-0 product-card"
+                key={product.id}
+                onClick={() => goToDetails(product.id)}
+                role="button"
+                aria-label={`View details for ${product.title}`}
+              >
                 <img
-                  className="card-img-top p-3"
+                  className="card-img-top p-2 product-img"
                   src={product.image}
-                  alt="Card"
-                  height={300}
+                  alt={product.title}
                 />
                 <div className="card-body">
                   <div className="d-flex justify-content-between align-items-center">
@@ -152,12 +163,14 @@ const Products = () => {
                   <Link
                     to={"/product/" + product.id}
                     className="btn btn-dark m-1"
+                    onClick={(e) => e.stopPropagation()}
                   >
                     Buy Now
                   </Link>
                   <button
                     className="btn btn-dark m-1"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.stopPropagation();
                       toast.success("Added to cart");
                       addProduct(product);
                     }}
@@ -181,8 +194,10 @@ const Products = () => {
             <hr />
           </div>
         </div>
-        <div className="row justify-content-center">
-          {loading ? <Loading /> : <ShowProducts />}
+        <div className="products-section rounded-3 p-3">
+          <div className="row justify-content-center">
+            {loading ? <Loading /> : <ShowProducts />}
+          </div>
         </div>
       </div>
     </>

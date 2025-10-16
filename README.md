@@ -14,6 +14,20 @@
 PrimeBrothers is a simple, responsive ecommerce frontend built with React and Bootstrap. It includes product listings, product details with recommendations, a cart powered by Redux, and a checkout summary using data from the Fake Store API.
 
 
+## Recent Update (Oct 16, 2025)
+
+Short summary of code changes (kept minimal):
+
+- Product cards open details on click (full-card click target)
+- Smooth hover: slight lift + image zoom on product cards
+- Buttons remain functional (Buy Now, Add to Cart)
+
+Files updated:
+
+- `src/components/Products.jsx` — added card onClick navigation and prevented event bubbling on buttons
+- `src/components/Products.css` — added hover transitions (lift and zoom)
+
+
 ## About
 
 PrimeBrothers is an ecommerce UI focused on a clean shopping experience: browse curated products, view details and recommendations, add to cart, and review an order summary at checkout. It’s built for speed and clarity, making it a great starting point for connecting a real backend or payments later. The brand reflects a family-run business from District Shikarpur, Sindh, Pakistan.

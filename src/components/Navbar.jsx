@@ -41,7 +41,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-light bg-light py-2 sticky-top">
             <div className="container d-flex align-items-center">
-                <button className="btn btn-outline-dark me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+                <button className="btn menu-btn me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
                     <i className="fa fa-bars me-2"></i> Menu
                 </button>
                 <div className="brand-dynamic" title="Brand">
