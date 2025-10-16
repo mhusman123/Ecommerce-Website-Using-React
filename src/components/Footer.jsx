@@ -16,16 +16,40 @@ const Footer = () => {
           <div className="col-md-4">
             <h5 className="fw-bold mb-2 text-white">Follow us</h5>
             <div className="d-flex gap-3 align-items-center">
-              <a className="text-white" href="https://facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+              <a
+                className="text-white"
+                href="https://www.facebook.com/share/16x1aTjsPA/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+              >
                 <i className="fab fa-facebook fa-lg"></i>
               </a>
-              <a className="text-success" href="https://wa.me/923001234567" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+              <a
+                className="text-success"
+                href="https://wa.me/923048844719"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="WhatsApp"
+              >
                 <i className="fab fa-whatsapp fa-lg"></i>
               </a>
-              <a className="text-white" href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <a
+                className="text-white"
+                href="https://www.linkedin.com/in/muhammad-usman-9464b5247?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+              >
                 <i className="fab fa-linkedin fa-lg"></i>
               </a>
-              <a className="text-danger" href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+              <a
+                className="text-danger"
+                href="https://www.instagram.com/m_usman73?igsh=MTJsZjV1N3o0cjFm"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
                 <i className="fab fa-instagram fa-lg"></i>
               </a>
             </div>

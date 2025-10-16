@@ -14,6 +14,7 @@ const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
+  const [activeCat, setActiveCat] = useState('all');
   const mountedRef = useRef(true);
 
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ const Products = () => {
         setData(await response.clone().json());
         setFilter(await response.json());
         setLoading(false);
+        setActiveCat('all');
       }
     };
 
@@ -83,32 +85,32 @@ const Products = () => {
       <>
         <div className="buttons text-center py-5">
           <button
-            className="btn btn-outline-dark btn-sm m-2"
-            onClick={() => setFilter(data)}
+            className={`filter-btn m-2 ${activeCat === 'all' ? 'active' : ''}`}
+            onClick={() => { setFilter(data); setActiveCat('all'); }}
           >
             All
           </button>
           <button
-            className="btn btn-outline-dark btn-sm m-2"
-            onClick={() => filterProduct("men's clothing")}
+            className={`filter-btn m-2 ${activeCat === 'men' ? 'active' : ''}`}
+            onClick={() => { filterProduct("men's clothing"); setActiveCat('men'); }}
           >
             Men's Clothing
           </button>
           <button
-            className="btn btn-outline-dark btn-sm m-2"
-            onClick={() => filterProduct("women's clothing")}
+            className={`filter-btn m-2 ${activeCat === 'women' ? 'active' : ''}`}
+            onClick={() => { filterProduct("women's clothing"); setActiveCat('women'); }}
           >
             Women's Clothing
           </button>
           <button
-            className="btn btn-outline-dark btn-sm m-2"
-            onClick={() => filterProduct("jewelery")}
+            className={`filter-btn m-2 ${activeCat === 'jewelery' ? 'active' : ''}`}
+            onClick={() => { filterProduct("jewelery"); setActiveCat('jewelery'); }}
           >
             Jewelery
           </button>
           <button
-            className="btn btn-outline-dark btn-sm m-2"
-            onClick={() => filterProduct("electronics")}
+            className={`filter-btn m-2 ${activeCat === 'electronics' ? 'active' : ''}`}
+            onClick={() => { filterProduct("electronics"); setActiveCat('electronics'); }}
           >
             Electronics
           </button>

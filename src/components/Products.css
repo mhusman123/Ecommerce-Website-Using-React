@@ -17,3 +17,10 @@
 .product-img{width:100%;height:220px;object-fit:contain;transition:transform .25s ease}
 .product-card .card-body{padding:.75rem}
 .product-card .list-group-item{padding:.5rem .75rem}
+
+/* Category filter buttons */
+.filter-btn{background:transparent;border:1px solid rgba(0,0,0,.15);color:#111;padding:.35rem .75rem;border-radius:.5rem;font-weight:600;transition:color .25s ease, border-color .25s ease, transform .2s ease}
+.filter-btn:hover,.filter-btn:focus{color:#0d6efd;border-color:#0d6efd;background:transparent;transform:translateY(-1px)}
+.filter-btn:active{transform:translateY(0)}
+.filter-btn.active{color:#fff;border-color:transparent;background:linear-gradient(90deg,#0d6efd,#6f42c1,#dc3545,#fd7e14,#198754);background-size:200% 200%;animation:filterGlow 6s linear infinite}
+@keyframes filterGlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}

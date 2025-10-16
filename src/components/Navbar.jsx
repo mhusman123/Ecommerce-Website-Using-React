@@ -41,14 +41,14 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-light bg-light py-2 sticky-top">
             <div className="container d-flex align-items-center">
-                <button className="btn menu-btn me-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-                    <i className="fa fa-bars me-2"></i> Menu
-                </button>
-                <div className="brand-dynamic" title="Brand">
+                <div className="brand-dynamic me-3" title="Brand">
                     {localStorage.getItem('displayName') || 'PrimeBrothers'}
                 </div>
+                <button className="btn menu-btn ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+                    <i className="fa fa-bars me-2"></i> Menu
+                </button>
                 {/* Offcanvas Sidebar for Mobile */}
-                <div className="offcanvas offcanvas-start offcanvas-custom" tabIndex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
+                <div className="offcanvas offcanvas-end offcanvas-custom" tabIndex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
                     <div className="offcanvas-header">
                         <h5 className="offcanvas-title mb-0" id="mobileSidebarLabel">PrimeBrothers</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
