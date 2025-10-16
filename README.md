@@ -1,6 +1,6 @@
 <div align="center">
 
-# E Commerce Website Using JavaScript
+# E Commerce Website Using React
 
 <p>
   <a href="https://github.com/mhusman123/Ecommerce-Website-Using-React/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/mhusman123/Ecommerce-Website-Using-React?style=for-the-badge&color=FFB000"></a>
@@ -11,7 +11,7 @@
 
 </div>
 
-PrimeBrothers is a simple, responsive ecommerce frontend built with JavaScript (React) and Bootstrap. It includes product listings, product details with recommendations, a cart powered by Redux, and a checkout summary using data from the Fake Store API. Prices are shown in Pakistani Rupees (RS) with a configurable conversion rate.
+PrimeBrothers is a simple, responsive ecommerce frontend built with React and Bootstrap. It includes product listings, product details with recommendations, a cart powered by Redux, and a checkout summary using data from the Fake Store API.
 
 
 ## About
@@ -19,19 +19,17 @@ PrimeBrothers is a simple, responsive ecommerce frontend built with JavaScript (
 PrimeBrothers is an ecommerce UI focused on a clean shopping experience: browse curated products, view details and recommendations, add to cart, and review an order summary at checkout. It’s built for speed and clarity, making it a great starting point for connecting a real backend or payments later. The brand reflects a family-run business from District Shikarpur, Sindh, Pakistan.
 
 
-## Demo
-
-Live Demo (optional): add your deployment URL here.
-
 ## Features
 
 - Modern, responsive UI (Bootstrap 5)
+- Left sidebar Menu (offcanvas) with navigation, offers, and quick access (Login, Register, Cart)
+- Scrolling announcement marquee (CSS animation)
 - Product listing with category filters
+- Full product titles for easy readability
 - Product detail page with "You may also like" slider
 - Cart state with quantity controls (Redux)
-- Checkout order summary (subtotal, shipping, total)
+- Checkout order summary (Free Delivery Across Pakistan, totals)
 - Toast notifications for key actions
-- Currency: PKR (RS) with USD→PKR conversion via environment variable
 ## Getting Started
 
 Run locally
@@ -69,17 +67,6 @@ The app will be available at http://localhost:3000
 * [Bootstrap](https://getbootstrap.com/)
 * [Fake Store API](https://fakestoreapi.com/)
 
-## Configuration
-
-Optional environment variables:
-
-- `REACT_APP_USD_TO_PKR` — override the USD→PKR conversion rate used for displaying RS prices. Example:
-
-```bash
-# .env
-REACT_APP_USD_TO_PKR=285
-```
-
 ## Project Structure
 
 ```
@@ -92,6 +79,8 @@ REACT_APP_USD_TO_PKR=285
 │  │  ├─ Navbar.jsx
 │  │  ├─ Footer.jsx
 │  │  ├─ Products.jsx
+│  │  ├─ AnnouncementBar.jsx
+│  │  ├─ Sidebar.css
 │  │  └─ ScrollToTop.jsx
 │  ├─ pages/
 │  │  ├─ Home.jsx
