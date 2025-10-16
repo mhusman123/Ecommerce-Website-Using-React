@@ -6,6 +6,10 @@ import './Sidebar.css'
 const Navbar = () => {
     const state = useSelector(state => state.handleCart)
     const navigate = useNavigate();
+    // Safely resolve brand name: only allow short, clean names
+    const rawName = (typeof window !== 'undefined') ? localStorage.getItem('displayName') : null;
+    const isValidName = (name) => /^[a-zA-Z0-9 &-]{2,24}$/.test(name || '');
+    const brandName = isValidName(rawName) ? rawName : 'PrimeBrothers';
 
     const closeSidebarThen = (afterHide) => {
         const el = document.getElementById('mobileSidebar');
@@ -42,7 +46,7 @@ const Navbar = () => {
         <nav className="navbar navbar-light bg-light py-2 sticky-top">
             <div className="container d-flex align-items-center">
                 <div className="brand-dynamic me-3" title="Brand">
-                    {localStorage.getItem('displayName') || 'PrimeBrothers'}
+                    {brandName}
                 </div>
                 <button className="btn menu-btn ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
                     <i className="fa fa-bars me-2"></i> Menu
