@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 
@@ -7,13 +7,13 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import { formatPKRFromUSD } from "../utils/currency";
+import { formatPKRFromUSD, formatDiscountedPKRFromUSD } from "../utils/currency";
 
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const [loading, setLoading] = useState(false);
-  let componentMounted = true;
+  const mountedRef = useRef(true);
 
   const dispatch = useDispatch();
 
@@ -22,21 +22,21 @@ const Products = () => {
   };
 
   useEffect(() => {
+    mountedRef.current = true;
     const getProducts = async () => {
       setLoading(true);
       const response = await fetch("https://fakestoreapi.com/products/");
-      if (componentMounted) {
+      if (mountedRef.current) {
         setData(await response.clone().json());
         setFilter(await response.json());
         setLoading(false);
       }
-
-      return () => {
-        componentMounted = false;
-      };
     };
 
     getProducts();
+    return () => {
+      mountedRef.current = false;
+    };
   }, []);
 
   const Loading = () => {
@@ -115,7 +115,7 @@ const Products = () => {
               key={product.id}
               className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4"
             >
-              <div className="card text-center h-100" key={product.id}>
+              <div className="card text-center h-100 shadow-sm border-0" key={product.id}>
                 <img
                   className="card-img-top p-3"
                   src={product.image}
@@ -123,19 +123,32 @@ const Products = () => {
                   height={300}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">
-                    {product.title.substring(0, 12)}...
-                  </h5>
-                  <p className="card-text">
-                    {product.description.substring(0, 90)}...
-                  </p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6 className="card-title text-start mb-1">
+                      {product.title}
+                    </h6>
+                    <span className="badge bg-danger">30% OFF</span>
+                  </div>
                 </div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item lead">{formatPKRFromUSD(product.price)}</li>
+                  <li className="list-group-item">
+                    <div className="d-flex justify-content-between align-items-center">
+                      <span className="text-muted text-decoration-line-through small">
+                        {formatPKRFromUSD(product.price)}
+                      </span>
+                      <span className="lead fw-bold">
+                        {formatDiscountedPKRFromUSD(product.price)}
+                      </span>
+                    </div>
+                  </li>
                   {/* <li className="list-group-item">Dapibus ac facilisis in</li>
                     <li className="list-group-item">Vestibulum at eros</li> */}
                 </ul>
                 <div className="card-body">
+                  <div className="d-flex flex-wrap gap-2 mb-2 justify-content-center">
+                    <span className="badge bg-success">Free Delivery</span>
+                    <span className="badge bg-primary">Buy 1 Get 1 Free</span>
+                  </div>
                   <Link
                     to={"/product/" + product.id}
                     className="btn btn-dark m-1"

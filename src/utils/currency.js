@@ -13,3 +13,13 @@ export const formatPKRFromUSD = (usd, rate = USD_TO_PKR) => {
 };
 
 export const formatPKR = (pkrValue) => `RS ${Number(pkrValue || 0).toLocaleString('en-PK')}`;
+
+// Discount helpers
+export const DEFAULT_DISCOUNT_RATE = 0.7; // 30% OFF
+export const discountedUSD = (usd, discountRate = DEFAULT_DISCOUNT_RATE) => {
+  if (typeof usd !== 'number') return 0;
+  return usd * discountRate;
+};
+export const formatDiscountedPKRFromUSD = (usd, discountRate = DEFAULT_DISCOUNT_RATE) => {
+  return formatPKRFromUSD(discountedUSD(usd, discountRate));
+};

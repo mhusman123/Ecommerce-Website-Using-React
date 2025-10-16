@@ -1,0 +1,6 @@
+.announcement-bar{position:relative;overflow:hidden;width:100%}
+.announcement-track{display:inline-flex;gap:16px;white-space:nowrap;will-change:transform;animation:announce-scroll 25s linear infinite;padding:8px 0}
+.announcement-pill{background:#198754;color:#fff;border-radius:999px;padding:6px 12px;font-weight:600}
+.announcement-pill:nth-child(3n+2){background:#dc3545}
+.announcement-pill:nth-child(3n){background:#0d6efd}
+@keyframes announce-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}

@@ -1,0 +1,9 @@
+.offcanvas-custom{max-width:320px;border-right:1px solid rgba(0,0,0,.05)}
+.offcanvas-custom .section-title{font-weight:600;margin-bottom:.5rem;color:#111}
+.offcanvas-custom .nav-link{display:flex;align-items:center}
+.offcanvas-custom .btn-outline-dark{border-color:#111;color:#111}
+.offcanvas-custom .btn-outline-dark:hover{background:#111;color:#fff}
+.brand-dynamic{font-weight:800;font-size:1.25rem;background:linear-gradient(90deg,#0d6efd,#dc3545,#198754);-webkit-background-clip:text;background-clip:text;color:transparent;animation:brandShift 8s linear infinite}
+@keyframes brandShift{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.sidebar-link{background:transparent;border:0;padding:.5rem 0;width:100%;text-align:left;font-size:1rem}
+.sidebar-link:hover{color:#0d6efd}

@@ -5,8 +5,8 @@ import Marquee from "react-fast-marquee";
 import { useDispatch } from "react-redux";
 import { addCart } from "../redux/action";
 
-import { Footer, Navbar } from "../components";
-import { formatPKRFromUSD } from "../utils/currency";
+import { Footer, Navbar, AnnouncementBar } from "../components";
+import { formatPKRFromUSD, formatDiscountedPKRFromUSD } from "../utils/currency";
 
 const Product = () => {
   const { id } = useParams();
@@ -83,7 +83,17 @@ const Product = () => {
                 {product.rating && product.rating.rate}{" "}
                 <i className="fa fa-star"></i>
               </p>
-              <h3 className="display-6  my-4">{formatPKRFromUSD(product.price)}</h3>
+              <div className="my-3">
+                <div className="d-flex align-items-baseline gap-3">
+                  <span className="text-muted text-decoration-line-through">{formatPKRFromUSD(product.price)}</span>
+                  <h3 className="display-6 my-0">{formatDiscountedPKRFromUSD(product.price)}</h3>
+                  <span className="badge bg-danger">30% OFF</span>
+                </div>
+                <div className="mt-2 d-flex gap-2">
+                  <span className="badge bg-success">Free Delivery Across Pakistan</span>
+                  <span className="badge bg-primary">Buy 1 Get 1 Free</span>
+                </div>
+              </div>
               <p className="lead">{product.description}</p>
               <button
                 className="btn btn-outline-dark"
@@ -141,7 +151,7 @@ const Product = () => {
                   />
                   <div className="card-body">
                     <h5 className="card-title">
-                      {item.title.substring(0, 15)}...
+                      {item.title}
                     </h5>
                   </div>
                   {/* <ul className="list-group list-group-flush">
@@ -171,7 +181,8 @@ const Product = () => {
   };
   return (
     <>
-      <Navbar />
+  <AnnouncementBar />
+  <Navbar />
       <div className="container">
         <div className="row">{loading ? <Loading /> : <ShowProduct />}</div>
         <div className="row my-5 py-5">

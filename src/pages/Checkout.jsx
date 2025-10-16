@@ -1,8 +1,8 @@
 import React from "react";
-import { Footer, Navbar } from "../components";
+import { Footer, Navbar, AnnouncementBar } from "../components";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { formatPKRFromUSD, formatPKR } from "../utils/currency";
+import { formatPKR, usdToPkr } from "../utils/currency";
 const Checkout = () => {
   const state = useSelector((state) => state.handleCart);
 
@@ -22,9 +22,9 @@ const Checkout = () => {
   };
 
   const ShowCheckout = () => {
-    let subtotalUSD = 0;
-    // Shipping expressed in PKR
-    let shipping = 500; // Rs 500 flat rate (adjust as needed)
+  let subtotalUSD = 0;
+  // Shipping expressed in PKR
+  let shipping = 0; // Free Delivery Across Pakistan
     let totalItems = 0;
     state.map((item) => {
       return (subtotalUSD += item.price * item.qty);
@@ -33,7 +33,7 @@ const Checkout = () => {
     state.map((item) => {
       return (totalItems += item.qty);
     });
-  const subtotalPKR = Math.round(formatPKRFromUSD(subtotalUSD).replace('Rs','').replace(/,/g,'').trim()) || 0;
+  const subtotalPKR = usdToPkr(subtotalUSD);
   return (
       <>
         <div className="container py-5">
@@ -50,7 +50,7 @@ const Checkout = () => {
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                       Shipping
-                      <span>{formatPKR(shipping)}</span>
+                      <span>{shipping === 0 ? "Free Delivery Across Pakistan" : formatPKR(shipping)}</span>
                     </li>
                     <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                       <div>
@@ -287,7 +287,8 @@ const Checkout = () => {
   };
   return (
     <>
-      <Navbar />
+  <AnnouncementBar />
+  <Navbar />
       <div className="container my-3 py-3">
         <h1 className="text-center">Checkout</h1>
         <hr />
