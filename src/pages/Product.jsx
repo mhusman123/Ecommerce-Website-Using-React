@@ -7,6 +7,7 @@ import { addCart } from "../redux/action";
 
 import { Footer, Navbar, AnnouncementBar } from "../components";
 import { formatPKRFromUSD, formatDiscountedPKRFromUSD } from "../utils/currency";
+import { getProductById, getProducts } from "../utils/api";
 
 const Product = () => {
   const { id } = useParams();
@@ -25,14 +26,10 @@ const Product = () => {
     const getProduct = async () => {
       setLoading(true);
       setLoading2(true);
-      const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-      const data = await response.json();
+      const data = await getProductById(id);
       setProduct(data);
       setLoading(false);
-      const response2 = await fetch(
-        `https://fakestoreapi.com/products/category/${data.category}`
-      );
-      const data2 = await response2.json();
+      const data2 = await getProducts(data.category);
       setSimilarProducts(data2);
       setLoading2(false);
     };
@@ -87,11 +84,11 @@ const Product = () => {
                 <div className="d-flex align-items-baseline gap-3">
                   <span className="text-muted text-decoration-line-through">{formatPKRFromUSD(product.price)}</span>
                   <h3 className="display-6 my-0">{formatDiscountedPKRFromUSD(product.price)}</h3>
-                  <span className="badge bg-danger">30% OFF</span>
+                  <span className="badge bg-danger badge-glow">30% OFF</span>
                 </div>
                 <div className="mt-2 d-flex gap-2">
-                  <span className="badge bg-success">Free Delivery Across Pakistan</span>
-                  <span className="badge bg-primary">Buy 1 Get 1 Free</span>
+                  <span className="badge bg-success badge-glow">Free Delivery Across Pakistan</span>
+                  <span className="badge bg-primary badge-glow">Buy 1 Get 1 Free</span>
                 </div>
               </div>
               <p className="lead">{product.description}</p>

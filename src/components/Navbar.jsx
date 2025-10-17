@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import './Sidebar.css'
@@ -42,15 +42,68 @@ const Navbar = () => {
     const go = (to) => {
         closeSidebarThen(() => navigate(to));
     };
+
+    // Theme toggle (light/dark) with persistence
+    const [dark, setDark] = useState(false);
+    useEffect(() => {
+        const saved = localStorage.getItem('themeDark') === '1';
+        setDark(saved);
+        document.body.classList.toggle('theme-dark', saved);
+    }, []);
+    const toggleTheme = () => {
+        const next = !dark;
+        setDark(next);
+        document.body.classList.toggle('theme-dark', next);
+        localStorage.setItem('themeDark', next ? '1' : '0');
+    };
     return (
         <nav className="navbar navbar-light bg-light py-2 sticky-top">
             <div className="container d-flex align-items-center">
                 <div className="brand-dynamic me-3" title="Brand">
                     {brandName}
                 </div>
-                <button className="btn menu-btn ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
-                    <i className="fa fa-bars me-2"></i> Menu
-                </button>
+                {/* Center promo ticker */}
+                <div className="promo-ticker flex-grow-1 mx-3 d-none d-md-flex align-items-center justify-content-center">
+                    <div className="promo-content">
+                        <span className="promo-item">
+                            <i className="fa fa-fire text-danger me-2"></i>
+                            <strong>30% OFF</strong> on All Items
+                        </span>
+                        <span className="promo-divider">•</span>
+                        <span className="promo-item">
+                            <i className="fa fa-gift text-primary me-2"></i>
+                            <strong>Buy 1 Get 1 Free</strong>
+                        </span>
+                        <span className="promo-divider">•</span>
+                        <span className="promo-item">
+                            <i className="fa fa-truck text-success me-2"></i>
+                            <strong>Free Delivery</strong> Across Pakistan
+                        </span>
+                    </div>
+                </div>
+                <div className="d-flex align-items-center ms-auto gap-2">
+                    <button
+                        className="btn btn-sm btn-outline-secondary d-flex align-items-center"
+                        onClick={toggleTheme}
+                        aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+                        title={dark ? 'Light mode' : 'Dark mode'}
+                    >
+                        {dark ? (
+                            <>
+                                <i className="fa fa-sun me-2"></i>
+                                Light
+                            </>
+                        ) : (
+                            <>
+                                <i className="fa fa-moon me-2"></i>
+                                Dark
+                            </>
+                        )}
+                    </button>
+                    <button className="btn menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar" aria-controls="mobileSidebar">
+                        <i className="fa fa-bars me-2"></i> Menu
+                    </button>
+                </div>
                 {/* Offcanvas Sidebar for Mobile */}
                 <div className="offcanvas offcanvas-end offcanvas-custom" tabIndex="-1" id="mobileSidebar" aria-labelledby="mobileSidebarLabel">
                     <div className="offcanvas-header">

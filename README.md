@@ -11,7 +11,41 @@
 
 </div>
 
+Live Site: https://mhusman123.github.io/Ecommerce-Website-Using-React/
+
 PrimeBrothers is a simple, responsive ecommerce frontend built with React and Bootstrap. It includes product listings, product details with recommendations, a cart powered by Redux, and a checkout summary using data from the Fake Store API.
+
+
+## Recent Update (Oct 17, 2025)
+
+Dark Mode experience upgraded across the site and made professional and consistent.
+
+Highlights:
+
+- Night/Day toggle added to Navbar (moon/sun button) with preference saved in localStorage.
+- Global dark theme variables and background for elegant, high-contrast reading.
+- Offcanvas Menu (mobile sidebar) fixed for dark mode: titles, links, buttons, and close icon are clearly visible with refined hover states.
+- Products page dark polish: rich section background, deeper card shadows, image pop, active filter glow, premium promotional badges.
+- Product detail dark polish: pricing/badge glow and consistent styling.
+- Checkout dark polish: glass cards, inputs, headers, payment buttons, and accepted logos refined for readability and aesthetics.
+- Cart dark polish: glass cards, quantity controls, image pop, and a modern gradient checkout CTA.
+
+How to use:
+
+- Click the moon/sun button in the Navbar to switch Night/Day.
+- The choice persists automatically for the next visit.
+
+Files updated today:
+
+- `src/components/Navbar.jsx` — theme toggle (sun/moon) with persistence.
+- `src/styles/theme.css` — dark theme variables, surfaces, shadows, text color, glow utilities.
+- `src/components/Sidebar.css` — dark-mode Menu readability (links, titles, close icon, outline buttons).
+- `src/components/Products.css` — dark variants for products section, cards, images, filter buttons.
+- `src/components/Products.jsx` — premium badge glow on cards.
+- `src/pages/Product.jsx` — premium badge glow on detail.
+- `src/pages/Checkout.css` — dark-mode backgrounds, glass cards, inputs, payment buttons, logos.
+- `src/pages/Cart.css` — new file: dark-mode backgrounds, glass cards, quantity controls, CTA.
+- `src/pages/Cart.jsx` — wired Cart.css classes (hero, glass, qty controls, CTA).
 
 
 ## Recent Update (Oct 16, 2025)

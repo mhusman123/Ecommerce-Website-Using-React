@@ -8,6 +8,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { formatPKRFromUSD, formatDiscountedPKRFromUSD } from "../utils/currency";
+import { getProducts } from "../utils/api";
 import "./Products.css";
 
 const Products = () => {
@@ -30,18 +31,18 @@ const Products = () => {
 
   useEffect(() => {
     mountedRef.current = true;
-    const getProducts = async () => {
+    const loadProducts = async () => {
       setLoading(true);
-      const response = await fetch("https://fakestoreapi.com/products/");
+      const list = await getProducts();
       if (mountedRef.current) {
-        setData(await response.clone().json());
-        setFilter(await response.json());
+        setData(list);
+        setFilter(list);
         setLoading(false);
         setActiveCat('all');
       }
     };
 
-    getProducts();
+    loadProducts();
     return () => {
       mountedRef.current = false;
     };
@@ -75,9 +76,11 @@ const Products = () => {
     );
   };
 
-  const filterProduct = (cat) => {
-    const updatedList = data.filter((item) => item.category === cat);
-    setFilter(updatedList);
+  const filterProduct = async (cat) => {
+    setLoading(true);
+    const list = await getProducts(cat);
+    setFilter(list);
+    setLoading(false);
   };
 
   const ShowProducts = () => {
@@ -140,7 +143,7 @@ const Products = () => {
                     <h6 className="card-title text-start mb-1">
                       {product.title}
                     </h6>
-                    <span className="badge bg-danger">30% OFF</span>
+                    <span className="badge bg-danger badge-glow">30% OFF</span>
                   </div>
                 </div>
                 <ul className="list-group list-group-flush">
@@ -159,8 +162,8 @@ const Products = () => {
                 </ul>
                 <div className="card-body">
                   <div className="d-flex flex-wrap gap-2 mb-2 justify-content-center">
-                    <span className="badge bg-success">Free Delivery</span>
-                    <span className="badge bg-primary">Buy 1 Get 1 Free</span>
+                    <span className="badge bg-success badge-glow">Free Delivery</span>
+                    <span className="badge bg-primary badge-glow">Buy 1 Get 1 Free</span>
                   </div>
                   <Link
                     to={"/product/" + product.id}

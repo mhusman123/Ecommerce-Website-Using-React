@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addCart, delCart } from "../redux/action";
 import { Link } from "react-router-dom";
 import { formatPKRFromUSD, formatPKR, usdToPkr } from "../utils/currency";
+import "./Cart.css";
 
 const Cart = () => {
   const state = useSelector((state) => state.handleCart);
@@ -45,12 +46,12 @@ const Cart = () => {
   const subtotalPKR = usdToPkr(subtotalUSD);
   return (
       <>
-        <section className="h-100 gradient-custom">
+        <section className="h-100 cart-hero">
           <div className="container py-5">
             <div className="row d-flex justify-content-center my-4">
               <div className="col-md-8">
-                <div className="card mb-4">
-                  <div className="card-header py-3">
+                <div className="card mb-4 glass-card">
+                  <div className="card-header py-3 glass-header">
                     <h5 className="mb-0">Item List</h5>
                   </div>
                   <div className="card-body">
@@ -69,6 +70,7 @@ const Cart = () => {
                                   alt={item.title}
                                   width={100}
                                   height={75}
+                                  className="cart-item-img"
                                 />
                               </div>
                             </div>
@@ -82,10 +84,7 @@ const Cart = () => {
                             </div>
 
                             <div className="col-lg-4 col-md-6">
-                              <div
-                                className="d-flex mb-4"
-                                style={{ maxWidth: "300px" }}
-                              >
+                              <div className="d-flex mb-4 qty-controls" style={{ maxWidth: "300px" }}>
                                 <button
                                   className="btn px-3"
                                   onClick={() => {
@@ -95,7 +94,7 @@ const Cart = () => {
                                   <i className="fas fa-minus"></i>
                                 </button>
 
-                                <p className="mx-5">{item.qty}</p>
+                                <p className="mx-5 qty-count">{item.qty}</p>
 
                                 <button
                                   className="btn px-3"
@@ -124,8 +123,8 @@ const Cart = () => {
                 </div>
               </div>
               <div className="col-md-4">
-                <div className="card mb-4">
-                  <div className="card-header py-3 bg-light">
+                <div className="card mb-4 glass-card">
+                  <div className="card-header py-3 glass-header">
                     <h5 className="mb-0">Order Summary</h5>
                   </div>
                   <div className="card-body">
@@ -147,10 +146,7 @@ const Cart = () => {
                       </li>
                     </ul>
 
-                    <Link
-                      to="/checkout"
-                      className="btn btn-dark btn-lg btn-block"
-                    >
+                    <Link to="/checkout" className="btn cart-cta btn-lg btn-block">
                       Go to checkout
                     </Link>
                   </div>
